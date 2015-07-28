@@ -1,0 +1,48 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="jquery.mobile-1.4.5.min.css">
+
+	<script src="jquery-2.1.4.min.js"></script>
+	<script src="jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+	<div data-role="page" id="home">
+		<a href="#newWord" class="ui-btn">add new</a>
+		<a href="#testWords" class="ui-btn">test words</a>
+		<a href="#listWords" class="ui-btn">list all words</a>
+		<a href="#dictionary" class="ui-btn">search</a>
+	</div>
+
+	<div data-role="page" id="newWord">
+		<a href="#home" class="ui-btn">back</a>
+		<div data-role="header">New word:</div>
+		<label for="textSK">(sk)</label>
+		<input name="textSK" id="textSK" value="" type="text">
+		<label for="textIT">(it)</label>
+		<input name="textIT" id="textIT" value="" type="text">
+		<button class="ui-btn" id="addNewWord">add</button>
+	</div>
+
+	<div data-role="page" id="testWords">
+		<a href="#home" class="ui-btn">back</a>
+		<div data-role="header">Translate:</div>
+		(sk)<span id="translateSK"></span>
+		<button class="ui-btn" id="testSKWord">show</button>
+	</div>
+
+	<div data-role="page" id="listWords">
+		<a href="#home" class="ui-btn">back</a>
+		<ul id="listAllWords"></ul>
+	</div>
+
+	<div data-role="page" id="dictionary">
+		<a href="#home" class="ui-btn">back</a>
+		<div data-role="header">Search:</div>
+		<label for="searchSK">(sk)</label>
+		<input name="searchSK" id="searchSK" value="" type="text">
+		<button class="ui-btn" id="searchSKWord">search</button>
+	</div>
+</body>
+</html>
