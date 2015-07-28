@@ -6,13 +6,16 @@
 
 	<script src="jquery-2.1.4.min.js"></script>
 	<script src="jquery.mobile-1.4.5.min.js"></script>
+	<script src="app.js"></script>
 </head>
 <body>
 	<div data-role="page" id="home">
-		<a href="#newWord" class="ui-btn">add new</a>
-		<a href="#testWords" class="ui-btn">test words</a>
-		<a href="#listWords" class="ui-btn">list all words</a>
-		<a href="#dictionary" class="ui-btn">search</a>
+		<div data-role="controlgroup">
+			<a href="#newWord" class="ui-btn">add new</a>
+			<a href="#testWords" class="ui-btn">test words</a>
+			<a href="#listWords" class="ui-btn">list all words</a>
+			<a href="#dictionary" class="ui-btn">search</a>
+		</div>
 	</div>
 
 	<div data-role="page" id="newWord">
@@ -34,7 +37,14 @@
 
 	<div data-role="page" id="listWords">
 		<a href="#home" class="ui-btn">back</a>
-		<ul id="listAllWords"></ul>
+		<div data-role="header">All words:</div>
+		<table data-role="table">
+			<thead><tr>
+				<th>sk</th>
+				<th>it</th>
+			</tr></thead>
+			<tbody id="listWordsBody"></tbody>
+		</table>
 	</div>
 
 	<div data-role="page" id="dictionary">
