@@ -51,6 +51,14 @@ $(function(){
 				distribution[words[wordID].lastTest]++;
 			}
 			return distribution;
+		},
+		getTranslationIT: function(textSK){
+			var words = model.getAll();
+			for (wordID in words){
+				if (words[wordID].textSK == textSK)
+					return words[wordID].textIT;
+			}
+			return 'not found';
 		}
 	}
 
@@ -62,9 +70,9 @@ $(function(){
 					$('#textIT').val('');
 				}
 			});
-			$('#searchSKWord').click(function()){
+			$('#searchSKWord').click(function(){
 				controller.translateSKWord($('#searchSK').val());
-			}
+			});
 			$(document).on("pagebeforeshow","#listWords",function(){
   				view.displayAllWords();
 			});
@@ -73,6 +81,9 @@ $(function(){
 			});
 			$(document).on("pagebeforeshow","#overview",function(){
   				controller.initOverview();
+			});
+			$(document).on("pagebeforeshow","#search",function(){
+  				view.initSearch();
 			});
 		},
 		displayAllWords: function(){
@@ -137,6 +148,13 @@ $(function(){
 		},
 		displayOverviewTotal: function(total){
 			$('#overviewTotal').html(total);
+		},
+		displayTranslationIT: function(translationIT){
+			$('#translationIT').html(translationIT)
+								.show();
+		},
+		initSearch: function(){
+			$('#translationIT').hide();		
 		}
 	}
 
@@ -168,8 +186,9 @@ $(function(){
 			view.displayOverviewTable(model.getDistribution());
 			view.displayOverviewTotal(model.getTotal());
 		},
-		translateSKWord: function(){
-			
+		translateSKWord: function(wordSK){
+			var translation = model.getTranslationIT(wordSK);
+			view.displayTranslationIT(translation);
 		}
 	}
 
