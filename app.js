@@ -25,6 +25,9 @@ $(function(){
 		getAll: function(){
 			return JSON.parse( localStorage.schatz01Words );
 		},
+		clearAll: function(){
+			localStorage.clear();
+		},
 		updateAll: function(data){
 			localStorage.schatz01Words = JSON.stringify(data);
 		},
@@ -72,6 +75,9 @@ $(function(){
 			});
 			$('#searchSKWord').click(function(){
 				controller.translateSKWord($('#searchSK').val());
+			});
+			$('#resetWords').click(function(){
+				controller.resetWords();
 			});
 			$(document).on("pagebeforeshow","#listWords",function(){
   				view.displayAllWords();
@@ -189,6 +195,10 @@ $(function(){
 		translateSKWord: function(wordSK){
 			var translation = model.getTranslationIT(wordSK);
 			view.displayTranslationIT(translation);
+		},
+		resetWords: function(){
+			model.clearAll();
+			model.init();
 		}
 	}
 

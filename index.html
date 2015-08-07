@@ -18,6 +18,7 @@
 			<a href="#listWords" class="ui-btn">list all words</a>
 			<a href="#dictionary" class="ui-btn">search</a>
 			<a href="#overview" class="ui-btn">overview</a>
+			<a href="#reset" class="ui-btn">reset words</a>
 		</div>
 	</div>
 
@@ -75,12 +76,19 @@
 		<div id="translationIT"></div>
 	</div>
 
+
 	<div data-role="page" id="overview">
 		<a href="#home" class="ui-btn ui-btn-inline ui-btn-icon-left ui-icon-back ui-nodisc-icon ui-alt-icon back">back</a>
 		<div id="overviewContainer">
 			<canvas id="overviewTable"></canvas>
 			<div>Total words: <span id="overviewTotal"></span></div>
 		</div>
+	</div>
+
+
+	<div data-role="page" id="reset">
+		<a href="#home" class="ui-btn ui-btn-inline ui-btn-icon-left ui-icon-back ui-nodisc-icon ui-alt-icon back">back</a>
+		<button class="ui-btn" id="resetWords">delete all words</button>
 	</div>
 
 </body>
