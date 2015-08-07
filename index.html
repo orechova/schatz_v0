@@ -3,12 +3,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel="stylesheet" href="jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="style.css">
 
 	<script src="jquery-2.1.4.min.js"></script>
 	<script src="jquery.mobile-1.4.5.min.js"></script>
 	<script src="app.js"></script>
 </head>
 <body>
+
 	<div data-role="page" id="home">
 		<div data-role="controlgroup">
 			<a href="#newWord" class="ui-btn">add new</a>
@@ -17,6 +19,7 @@
 			<a href="#dictionary" class="ui-btn">search</a>
 		</div>
 	</div>
+
 
 	<div data-role="page" id="newWord">
 		<a href="#home" class="ui-btn ui-btn-inline ui-btn-icon-left ui-icon-back ui-nodisc-icon ui-alt-icon">back</a>
@@ -28,12 +31,24 @@
 		<button class="ui-btn" id="addNewWord">add</button>
 	</div>
 
+
 	<div data-role="page" id="testWords">
 		<a href="#home" class="ui-btn ui-btn-inline ui-btn-icon-left ui-icon-back ui-nodisc-icon ui-alt-icon">back</a>
 		<div data-role="header">Translate:</div>
-		(sk)<span id="translateSK"></span>
-		<button class="ui-btn" id="testSKWord">show</button>
+		(sk)<span id="translate" data-word-id=""></span>
+		<br>
+		<div id="testSolution">
+			(it)<span id="translation"></span>
+			<br>
+			<button class="ui-btn ui-btn-inline testResult" data-result="5">really hard</button>
+			<button class="ui-btn ui-btn-inline testResult" data-result="4">hard</button>
+			<button class="ui-btn ui-btn-inline testResult" data-result="3">okay</button>
+			<button class="ui-btn ui-btn-inline testResult" data-result="2">easy</button>
+			<button class="ui-btn ui-btn-inline testResult" data-result="1">really easy</button>
+		</div>
+		<button class="ui-btn" id="testWord">show</button>
 	</div>
+
 
 	<div data-role="page" id="listWords">
 		<a href="#home" class="ui-btn ui-btn-inline ui-btn-icon-left ui-icon-back ui-nodisc-icon ui-alt-icon">back</a>
@@ -47,6 +62,7 @@
 		</table>
 	</div>
 
+
 	<div data-role="page" id="dictionary">
 		<a href="#home" class="ui-btn ui-btn-inline ui-btn-icon-left ui-icon-back ui-nodisc-icon ui-alt-icon">back</a>
 		<div data-role="header">Search:</div>
@@ -54,5 +70,6 @@
 		<input name="searchSK" id="searchSK" value="" type="text">
 		<button class="ui-btn" id="searchSKWord">search</button>
 	</div>
+
 </body>
 </html>
