@@ -17,6 +17,7 @@
 			<a href="#testWords" class="ui-btn">test words</a>
 			<a href="#listWords" class="ui-btn">list all words</a>
 			<a href="#dictionary" class="ui-btn">search</a>
+			<a href="#overview" class="ui-btn">overview</a>
 		</div>
 	</div>
 
@@ -35,16 +36,18 @@
 	<div data-role="page" id="testWords">
 		<a href="#home" class="ui-btn ui-btn-inline ui-btn-icon-left ui-icon-back ui-nodisc-icon ui-alt-icon">back</a>
 		<div data-role="header">Translate:</div>
+		<br>
 		(sk)<span id="translate" data-word-id=""></span>
 		<br>
 		<div id="testSolution">
 			(it)<span id="translation"></span>
-			<br>
-			<button class="ui-btn ui-btn-inline testResult" data-result="5">really hard</button>
-			<button class="ui-btn ui-btn-inline testResult" data-result="4">hard</button>
-			<button class="ui-btn ui-btn-inline testResult" data-result="3">okay</button>
-			<button class="ui-btn ui-btn-inline testResult" data-result="2">easy</button>
-			<button class="ui-btn ui-btn-inline testResult" data-result="1">really easy</button>
+			<br><br>
+			<div data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<button class="ui-btn ui-btn-inline testResult" data-result="4">no idea</button>
+				<button class="ui-btn ui-btn-inline testResult" data-result="3">hard</button>
+				<button class="ui-btn ui-btn-inline testResult" data-result="2">ok</button>
+				<button class="ui-btn ui-btn-inline testResult" data-result="1">easy</button>
+			</div>
 		</div>
 		<button class="ui-btn" id="testWord">show</button>
 	</div>
@@ -69,6 +72,14 @@
 		<label for="searchSK">(sk)</label>
 		<input name="searchSK" id="searchSK" value="" type="text">
 		<button class="ui-btn" id="searchSKWord">search</button>
+	</div>
+
+	<div data-role="page" id="overview">
+		<a href="#home" class="ui-btn ui-btn-inline ui-btn-icon-left ui-icon-back ui-nodisc-icon ui-alt-icon back">back</a>
+		<div id="overviewContainer">
+			<canvas id="overviewTable"></canvas>
+			<div>Total words: <span id="overviewTotal"></span></div>
+		</div>
 	</div>
 
 </body>
