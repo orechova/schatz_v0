@@ -70,10 +70,16 @@
 	<div data-role="page" id="dictionary">
 		<a href="#home" class="ui-btn ui-btn-inline ui-btn-icon-left ui-icon-back ui-nodisc-icon ui-alt-icon">back</a>
 		<div data-role="header">Search:</div>
-		<label for="searchSK">(sk)</label>
-		<input name="searchSK" id="searchSK" value="" type="text">
-		<button class="ui-btn" id="searchSKWord">search</button>
-		<div id="translationIT"></div>
+		<div data-role="fieldcontain">
+		<label for="searchFrom">from</label>
+			<select name="searchFrom" id="searchFrom" data-role="slider">
+				<option value="sk">sk</option>
+				<option value="it">it</option>
+			</select>
+		</div>
+		<input name="searchWord" id="searchWord" value="" type="text">
+		<button class="ui-btn" id="searchButton">search</button>
+		<div id="searchTranslation"></div>
 	</div>
 
 

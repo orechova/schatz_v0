@@ -15,3 +15,7 @@
 #overviewContainer{
 	text-align: center;
 }
+
+.ui-btn{
+	padding: 1em 3em;
+}

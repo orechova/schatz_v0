@@ -11,6 +11,8 @@ $(function(){
 			}
 		},
 		add: function(textSK, textIT){
+			if (textSK.length<1 || textIT.length<1)
+				return false;
 			var data = JSON.parse( localStorage.schatz01Words );
 			var word = { 'textSK': textSK, 'textIT': textIT, 'lastTouched': new Date(), 'lastTest': 0 }
 			data[model.nextLastID()] = word;
@@ -58,8 +60,16 @@ $(function(){
 		getTranslationIT: function(textSK){
 			var words = model.getAll();
 			for (wordID in words){
-				if (words[wordID].textSK == textSK)
-					return words[wordID].textIT;
+				if (words[wordID].textSK.indexOf(textSK) > -1)
+					return words[wordID].textSK + ' - ' + words[wordID].textIT;
+			}
+			return 'not found';
+		},
+		getTranslationSK: function(textIT){
+			var words = model.getAll();
+			for (wordID in words){
+				if (words[wordID].textIT.indexOf(textIT) > -1)
+					return words[wordID].textIT + ' - ' + words[wordID].textSK;
 			}
 			return 'not found';
 		}
@@ -73,8 +83,8 @@ $(function(){
 					$('#textIT').val('');
 				}
 			});
-			$('#searchSKWord').click(function(){
-				controller.translateSKWord($('#searchSK').val());
+			$('#searchButton').click(function(){
+				controller.translateWord($('#searchWord').val(), $('#searchFrom option:selected').val());
 			});
 			$('#resetWords').click(function(){
 				controller.resetWords();
@@ -127,7 +137,7 @@ $(function(){
 			var canvas = $('#overviewTable')[0];
 			var context = canvas.getContext("2d");
 
-			var colors = ["black","red","orange","yellow","green"];
+			var colors = ["black","green","yellow","orange","red"];
 
 			var highest = 0;
 			for (val in distribution){
@@ -155,12 +165,12 @@ $(function(){
 		displayOverviewTotal: function(total){
 			$('#overviewTotal').html(total);
 		},
-		displayTranslationIT: function(translationIT){
-			$('#translationIT').html(translationIT)
+		displayTranslation: function(translation){
+			$('#searchTranslation').html(translation)
 								.show();
 		},
 		initSearch: function(){
-			$('#translationIT').hide();		
+			$('#searchTranslation').hide();		
 		}
 	}
 
@@ -192,9 +202,13 @@ $(function(){
 			view.displayOverviewTable(model.getDistribution());
 			view.displayOverviewTotal(model.getTotal());
 		},
-		translateSKWord: function(wordSK){
-			var translation = model.getTranslationIT(wordSK);
-			view.displayTranslationIT(translation);
+		translateWord: function(word, languageFrom){
+			if (languageFrom=='sk'){
+				var translation = model.getTranslationIT(word);
+			} else if (languageFrom=='it') {
+				var translation = model.getTranslationSK(word);
+			}
+			view.displayTranslation(translation);
 		},
 		resetWords: function(){
 			model.clearAll();
